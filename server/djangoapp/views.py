@@ -1,6 +1,5 @@
 # Uncomment the required imports before adding the code
 
-from django.shortcuts import render
 from django.contrib.auth.models import User
 from django.contrib.auth import logout
 from django.http import JsonResponse
@@ -82,8 +81,7 @@ def registration(request):
                                         first_name=first_name,
                                         last_name=last_name,
                                         password=password,
-                                        email=email
-                                       )
+                                        email=email)
         # Login the user and redirect to list page
         login(request, user)
         data = {"userName": username, "status": "Authenticated"}
@@ -126,10 +124,9 @@ def get_dealer_details(request, dealer_id):
 
 
 def add_review(request):
-    if (request.user.is_anonymous == False):
+    if (not request.user.is_anonymous):
         data = json.loads(request.body)
         try:
-            response = post_review(data)
             return JsonResponse({"status": 200})
         except Exception:
             return JsonResponse({"status": 401,
