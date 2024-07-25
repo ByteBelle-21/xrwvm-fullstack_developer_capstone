@@ -1,3 +1,4 @@
+
 # Uncomment the following imports before adding the Model code
 
 from django.db import models
@@ -13,6 +14,7 @@ class CarMake(models.Model):
 
     def __str__(self): 
         return self.name  # Return the name as the string representation
+
 
 
 
